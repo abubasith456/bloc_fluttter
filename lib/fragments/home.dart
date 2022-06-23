@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
                           state.isBold ? FontWeight.bold : FontWeight.normal,
                       fontStyle:
                           state.isItalic ? FontStyle.italic : FontStyle.normal,
-                      // color: colors(state.color),
+                      color: colors(state.color),
                     ),
                   ),
                 ),

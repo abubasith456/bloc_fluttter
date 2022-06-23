@@ -122,32 +122,33 @@ class SettingPage extends StatelessWidget {
                   ],
                 ),
               ),
-              // const SizedBox(
-              //   height: 5,
-              // ),
-              // const Text(
-              //   'Text color:',
-              //   style: TextStyle(fontWeight: FontWeight.bold),
-              // ),
-              // const SizedBox(
-              //   width: 10,
-              // ),
-              // Container(
-              //   padding: EdgeInsets.all(10),
-              //   width: MediaQuery.of(context).size.width,
-              //   child: DropdownButton<String>(
-              //     items: items.map((String value) {
-              //       return DropdownMenuItem<String>(
-              //         value: value,
-              //         child: Text(value),
-              //       );
-              //     }).toList(),
-              //     onChanged: (value) {
-              //       StoreProvider.of<AppState>(context).dispatch(Color(value!));
-              //     },
-              //     value: state.color,
-              //   ),
-              // ),
+              const SizedBox(
+                height: 5,
+              ),
+              const Text(
+                'Text color:',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: MediaQuery.of(context).size.width,
+                child: DropdownButton<String>(
+                  items: items.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    // StoreProvider.of<AppState>(context).dispatch(Color(value!));
+                    context.read<SettingCubit>().color(value!);
+                  },
+                  value: state.color,
+                ),
+              ),
               // StoreProvider<DropDownState>(
               //   store: store,
               //   child: Container(
