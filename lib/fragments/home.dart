@@ -59,16 +59,16 @@ class _HomePageState extends State<HomePage> {
                 //     },
                 //   ),
                 // ),
-                TextButton(
-                    onPressed: () {
-                      // final response = await http.get(Uri.parse(
-                      //     'https://jsonplaceholder.typicode.com/users'));
-                      // print(response.statusCode);
-                      // final value = jsonDecode(response.body);
-                      // getUser();
-                      // StoreProvider.of<AppState>(context).dispatch(getUser());
-                    },
-                    child: Text('Press to fetch')),
+                // TextButton(
+                //     onPressed: () {
+                //       // final response = await http.get(Uri.parse(
+                //       //     'https://jsonplaceholder.typicode.com/users'));
+                //       // print(response.statusCode);
+                //       // final value = jsonDecode(response.body);
+                //       // getUser();
+                //       // StoreProvider.of<AppState>(context).dispatch(getUser());
+                //     },
+                //     child: Text('Press to fetch')),
                 Container(
                   child: Text(
                     Strings.paragraph,

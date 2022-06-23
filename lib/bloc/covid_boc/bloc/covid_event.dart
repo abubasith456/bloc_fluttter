@@ -8,3 +8,5 @@ abstract class CovidEvent extends Equatable {
 }
 
 class GetCovidList extends CovidEvent {}
+
+class GetNewsList extends CovidEvent {}

@@ -1,4 +1,5 @@
 import 'package:bloc_flutter/const/const_string.dart';
+import 'package:bloc_flutter/model/news_model.dart';
 import 'package:dio/dio.dart';
 
 import '../model/summary_model.dart';
@@ -13,6 +14,16 @@ class ApiProvider {
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
       return CovidModel.withError("Data not found / Connection issue");
+    }
+  }
+
+  Future<NewsModel> fetchNews() async {
+    try {
+      Response response = await _dio.get(Strings.newsApi + Strings.apiKey);
+      return NewsModel.fromJson(response.data);
+    } catch (error, stacktrace) {
+      print("Exception occured: $error stackTrace: $stacktrace");
+      return NewsModel.fromError("Data not found / Connection issue");
     }
   }
 }

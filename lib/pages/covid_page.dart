@@ -89,10 +89,10 @@ class _CovidPageState extends State<CovidPage> {
       itemCount: model.countries!.length,
       itemBuilder: (context, index) {
         return Container(
-          margin: EdgeInsets.all(8.0),
+          margin: const EdgeInsets.all(2),
           child: Card(
             child: Container(
-              margin: EdgeInsets.all(8.0),
+              margin: const EdgeInsets.all(8.0),
               child: BlocBuilder<SettingCubit, SettingState>(
                 builder: (context, state) {
                   return Column(
@@ -160,5 +160,5 @@ class _CovidPageState extends State<CovidPage> {
     );
   }
 
-  Widget _buildLoading() => Center(child: CircularProgressIndicator());
+  Widget _buildLoading() => const Center(child: CircularProgressIndicator());
 }

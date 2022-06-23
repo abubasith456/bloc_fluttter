@@ -40,6 +40,7 @@ dependencies:
   # flutter_cubit: ^0.1.1
   equatable: ^2.0.3
   dio: ^4.0.4
+  url_launcher: ^6.0.3
 
 dev_dependencies:
   flutter_test:

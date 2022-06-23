@@ -4,4 +4,7 @@ class Strings {
   static const String aboutUs =
       'An "About Us" Page is where you reveal your brand story, business values, mission, and experiences. Now the question is: why would you want to share all this information and make it appealing? The answer is simple: you want to tell your audience who you are, show them what you are good at, and tell them you are worthy of their trust. Think for a moment: would you rather purchase from a business you know nothing about, or would you go for somebody with a friendly face shared on their About page and a story that you find exciting? The latter one, right? A great About Us page not just portrays your story, qualities and provides an insight on how your business started, but it also helps you sell. When visitors become familiar with your story and connect with it, theyre probably going to purchase from you. A well-planned About Us page can do this!';
   static const String BASE_URL = 'https://api.covid19api.com/summary';
+  static const String newsApi =
+      'https://newsapi.org/v2/everything?q=keyword&apiKey=';
+  static const String apiKey = '9afe4ce359e049de854e89c3a82a41d6';
 }

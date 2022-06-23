@@ -7,6 +7,7 @@ abstract class CovidState extends Equatable {
   List<Object> get props => [];
 }
 
+//Covid state
 class CovidInitial extends CovidState {}
 
 class CovidLoadingState extends CovidState {}
@@ -19,4 +20,19 @@ class CovidLoadedState extends CovidState {
 class CovidError extends CovidState {
   final String errorMessage;
   const CovidError(this.errorMessage);
+}
+
+//News State
+class NewsInitial extends CovidState {}
+
+class NewsLoadingState extends CovidState {}
+
+class NewsLoadedState extends CovidState {
+  final NewsModel newsModel;
+  const NewsLoadedState(this.newsModel);
+}
+
+class NewsError extends CovidState {
+  final String error;
+  const NewsError(this.error);
 }
