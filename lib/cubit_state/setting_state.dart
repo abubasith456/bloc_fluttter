@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class SettingState {
   late double fontSize;
   late bool isBold;

@@ -12,6 +12,12 @@ class NavigationDrawer extends StatelessWidget {
         children: <Widget>[
           createDrawerHeader(),
           createDrawerBodyItem(
+            icon: Icons.cabin,
+            text: 'Covid',
+            onTap: () =>
+                Navigator.pushReplacementNamed(context, PageRoutes.covidPage),
+          ),
+          createDrawerBodyItem(
             icon: Icons.home,
             text: 'Home',
             onTap: () =>

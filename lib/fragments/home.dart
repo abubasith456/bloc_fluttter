@@ -3,14 +3,19 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../const/const.dart';
+import '../const/const_string.dart';
 import '../cubit_state/setting_cubit.dart';
 import '../cubit_state/setting_state.dart';
 import '../navidation_drawer.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   static const String routeName = '/homePage';
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   get http => null;
 
   Color colors(String name) {

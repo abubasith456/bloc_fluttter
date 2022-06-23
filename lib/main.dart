@@ -2,6 +2,7 @@ import 'package:bloc_flutter/bloc/counter_block.dart';
 import 'package:bloc_flutter/cubit_state/setting_cubit.dart';
 import 'package:bloc_flutter/cubit_state/setting_state.dart';
 import 'package:bloc_flutter/fragments/about_us.dart';
+import 'package:bloc_flutter/pages/covid_page.dart';
 import 'package:bloc_flutter/routes/pageRoutes.dart';
 import 'package:bloc_flutter/widget/cubit_counter_wiget.dart';
 import 'package:flutter/material.dart';
@@ -32,11 +33,12 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
             ),
             routes: {
+              PageRoutes.covidPage: (context) => CovidPage(),
               PageRoutes.home: (context) => HomePage(),
               PageRoutes.aboutUs: (context) => AboutUs(),
               PageRoutes.settings: (context) => SettingPage()
             },
-            home: HomePage()));
+            home: const CovidPage()));
   }
 }
 
