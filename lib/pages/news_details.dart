@@ -22,7 +22,8 @@ class NewsDetailsPage extends StatelessWidget {
             Positioned(bottom: 5, right: 40, child: LinkButton())
           ]),
           Padding(
-              padding: EdgeInsets.only(top: 4, right: 15, left: 15, bottom: 15),
+              padding: const EdgeInsets.only(
+                  top: 4, right: 15, left: 15, bottom: 15),
               child: Column(
                 children: [
                   AuthorAndData(context),

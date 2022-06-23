@@ -28,6 +28,12 @@ class _NewsPageState extends State<NewsPage> {
   }
 
   @override
+  void dispose() {
+    _newsBloc.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavigationDrawer(),
@@ -64,7 +70,7 @@ class _NewsPageState extends State<NewsPage> {
                   content: Text(state.error),
                 ),
               );
-            }
+            } else if (state is NewsCountryChanged) {}
           },
           child: BlocBuilder<CovidBloc, CovidState>(
             builder: (context, state) {
@@ -196,5 +202,5 @@ class _NewsPageState extends State<NewsPage> {
 
 class ImageURLS {
   static const DEFAULT_IMG_URL =
-      "https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc=";
+      "https://thumbs.dreamstime.com/z/not-available-stamp-seal-watermark-distress-style-designed-rectangle-circles-stars-black-vector-rubber-print-title-138796185.jpg";
 }

@@ -32,6 +32,8 @@ class NewsLoadedState extends CovidState {
   const NewsLoadedState(this.newsModel);
 }
 
+class NewsCountryChanged extends CovidState {}
+
 class NewsError extends CovidState {
   final String error;
   const NewsError(this.error);

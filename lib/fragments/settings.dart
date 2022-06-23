@@ -1,4 +1,6 @@
+import 'package:bloc_flutter/const/const_string.dart';
 import 'package:bloc_flutter/cubit_state/setting_cubit.dart';
+import 'package:bloc_flutter/model/news_spec.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,6 +42,30 @@ class SettingPage extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const Text(
+                'Select Country',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Container(
+                padding: const EdgeInsets.all(10),
+                width: MediaQuery.of(context).size.width,
+                child: DropdownButton<String>(
+                  items: Strings.countries.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    // StoreProvider.of<AppState>(context).dispatch(Color(value!));
+                    context.read<SettingCubit>().newsCountry(value!);
+                  },
+                  value: state.newsCountry,
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
               const Text(
                 'Font Size',
                 style: TextStyle(fontWeight: FontWeight.bold),
