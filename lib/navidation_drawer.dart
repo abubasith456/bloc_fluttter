@@ -24,10 +24,10 @@ class NavigationDrawer extends StatelessWidget {
                 Navigator.pushReplacementNamed(context, PageRoutes.newsPage),
           ),
           createDrawerBodyItem(
-            icon: Icons.home,
-            text: 'Home',
-            onTap: () =>
-                Navigator.pushReplacementNamed(context, PageRoutes.home),
+            icon: Icons.qr_code,
+            text: 'QR scanner',
+            onTap: () => Navigator.pushReplacementNamed(
+                context, PageRoutes.qrScannerPage),
           ),
           createDrawerBodyItem(
             icon: Icons.person,

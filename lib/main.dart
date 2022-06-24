@@ -3,6 +3,7 @@ import 'package:bloc_flutter/cubit_state/setting_cubit.dart';
 import 'package:bloc_flutter/cubit_state/setting_state.dart';
 import 'package:bloc_flutter/fragments/about_us.dart';
 import 'package:bloc_flutter/fragments/news_page.dart';
+import 'package:bloc_flutter/fragments/qr_scanner_page.dart';
 import 'package:bloc_flutter/pages/covid_page.dart';
 import 'package:bloc_flutter/routes/pageRoutes.dart';
 import 'package:bloc_flutter/widget/cubit_counter_wiget.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
             routes: {
               // PageRoutes.covidPage: (context) => CovidPage(),
               PageRoutes.newsPage: (context) => NewsPage(context),
-              PageRoutes.home: (context) => HomePage(),
+              PageRoutes.qrScannerPage: (context) => QRscannerPage(),
               PageRoutes.aboutUs: (context) => AboutUs(),
               PageRoutes.settings: (context) => SettingPage()
             },

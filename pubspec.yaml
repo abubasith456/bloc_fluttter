@@ -42,6 +42,8 @@ dependencies:
   dio: ^4.0.4
   url_launcher: ^6.0.3
   flutter_launcher_icons: ^0.9.3
+  # barcode_scan: any
+  
 
 flutter_icons:
   android: true
