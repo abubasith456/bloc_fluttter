@@ -29,10 +29,14 @@ class NewsLoadingState extends CovidState {}
 
 class NewsLoadedState extends CovidState {
   final NewsModel newsModel;
-  const NewsLoadedState(this.newsModel);
+  String country;
+  NewsLoadedState(this.newsModel, this.country);
 }
 
-class NewsCountryChanged extends CovidState {}
+class NewsCountryChanged extends CovidState {
+  final String country;
+  NewsCountryChanged(this.country);
+}
 
 class NewsError extends CovidState {
   final String error;

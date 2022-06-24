@@ -17,16 +17,18 @@ class CovidPage extends StatefulWidget {
   State<CovidPage> createState() => _CovidPageState();
 }
 
-class _CovidPageState extends State<CovidPage> {
-  final CovidBloc _newsBloc = CovidBloc();
-  @override
-  void initState() {
-    _newsBloc.add(GetCovidList());
-    super.initState();
-  }
+late CovidBloc _newsBloc;
 
+class _CovidPageState extends State<CovidPage> {
   @override
   Widget build(BuildContext context) {
+    _newsBloc = CovidBloc(context);
+    @override
+    void initState() {
+      _newsBloc.add(GetCovidList());
+      super.initState();
+    }
+
     return Scaffold(
       drawer: NavigationDrawer(),
       appBar: AppBar(title: const Text('COVID-19 List')),

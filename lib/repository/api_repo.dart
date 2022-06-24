@@ -1,4 +1,5 @@
 import 'package:bloc_flutter/model/news_model.dart';
+import 'package:flutter/material.dart';
 
 import '../model/summary_model.dart';
 import '../util/api.dart';
@@ -10,8 +11,8 @@ class ApiRepository {
     return _provider.fetchCovidList();
   }
 
-  Future<NewsModel> fetchNewsList() {
-    return _provider.fetchNews();
+  Future<NewsModel> fetchNewsList(BuildContext context) {
+    return _provider.fetchNews(context);
   }
 }
 

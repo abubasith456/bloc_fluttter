@@ -13,18 +13,10 @@ import '../navidation_drawer.dart';
 class SettingPage extends StatelessWidget {
   static const String routeName = '/eventPage';
 
-  // var store = Store<DropDownState>(dropDownReducer,
-  //     initialState: DropDownState(color: 'Black'));
   var selectedValue = 'Black';
-  var items = [
-    'Blue',
-    'Green',
-    'Red',
-    'Yellow',
-    'Orange',
-    'Black',
-  ];
 
+  final countries = Strings.country;
+  final category = Strings.category;
   @override
   Widget build(BuildContext context) {
     // final SettingsBloc settingsBloc = BlocProvider.of<SettingsBloc>(context);
@@ -50,7 +42,7 @@ class SettingPage extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 width: MediaQuery.of(context).size.width,
                 child: DropdownButton<String>(
-                  items: Strings.countries.map((String value) {
+                  items: countries.keys.map((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value),
@@ -58,11 +50,44 @@ class SettingPage extends StatelessWidget {
                   }).toList(),
                   onChanged: (value) {
                     // StoreProvider.of<AppState>(context).dispatch(Color(value!));
-                    context.read<SettingCubit>().newsCountry(value!);
+                    context.read<SettingCubit>().newsCountry(countries[value]!);
                   },
-                  value: state.newsCountry,
+                  value: countries.keys.firstWhere(
+                    (element) => countries[element] == state.newsCountry,
+                    orElse: () => 'in',
+                  ),
                 ),
               ),
+
+              const SizedBox(
+                height: 5,
+              ),
+              const Text(
+                'News Category',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Container(
+                padding: const EdgeInsets.all(10),
+                width: MediaQuery.of(context).size.width,
+                child: DropdownButton<String>(
+                  items: category.keys.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    // StoreProvider.of<AppState>(context).dispatch(Color(value!));
+                    context.read<SettingCubit>().newsCategory(category[value]!);
+                    print(category[value]!);
+                  },
+                  value: category.keys.firstWhere(
+                    (element) => category[element] == state.categotyCode,
+                    orElse: () => 'general',
+                  ),
+                ),
+              ),
+
               const SizedBox(
                 height: 5,
               ),
@@ -162,7 +187,7 @@ class SettingPage extends StatelessWidget {
                 padding: EdgeInsets.all(10),
                 width: MediaQuery.of(context).size.width,
                 child: DropdownButton<String>(
-                  items: items.map((String value) {
+                  items: Strings.items.map((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value),

@@ -35,12 +35,12 @@ class MyApp extends StatelessWidget {
             ),
             routes: {
               // PageRoutes.covidPage: (context) => CovidPage(),
-              PageRoutes.newsPage: (context) => NewsPage(),
+              PageRoutes.newsPage: (context) => NewsPage(context),
               PageRoutes.home: (context) => HomePage(),
               PageRoutes.aboutUs: (context) => AboutUs(),
               PageRoutes.settings: (context) => SettingPage()
             },
-            home: const NewsPage()));
+            home: NewsPage(context)));
   }
 }
 

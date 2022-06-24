@@ -2,27 +2,30 @@ import 'package:bloc/bloc.dart';
 import 'package:bloc_flutter/model/news_model.dart';
 import 'package:bloc_flutter/model/summary_model.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import '../../../repository/api_repo.dart';
 part 'covid_event.dart';
 part 'covid_state.dart';
 
 class CovidBloc extends Bloc<CovidEvent, CovidState> {
-  CovidBloc() : super(CovidInitial()) {
+  CovidBloc(BuildContext context) : super(CovidInitial()) {
     final ApiRepository _apiRepository = ApiRepository();
 
     on<CovidEvent>((event, emit) async {
       try {
-        emit(CovidLoadingState());
-        final mList = await _apiRepository.fetchCovidList();
-        emit(CovidLoadedState(mList));
-        if (mList.error != null) {
-          emit(CovidError(mList.error!));
-        }
+        // emit(CovidLoadingState());
+        // final mList = await _apiRepository.fetchCovidList();
+        // emit(CovidLoadedState(mList));
+        // if (mList.error != null) {
+        //   emit(CovidError(mList.error!));
+        // }
 
         //News Bloc
         emit(NewsLoadingState());
-        final newsList = await _apiRepository.fetchNewsList();
-        emit(NewsLoadedState(newsList));
+        final newsList = await _apiRepository.fetchNewsList(context);
+        emit(NewsCountryChanged('in'));
+
+        emit(NewsLoadedState(newsList, 'in'));
         if (newsList.error != null) {
           emit(NewsError(newsList.error!));
         }

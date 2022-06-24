@@ -10,12 +10,13 @@ class SettingCubit extends Cubit<SettingState> {
             isBold: false,
             isItalic: false,
             color: 'Black',
-            newsCountry: 'in'));
+            newsCountry: 'in',
+            categotyCode: 'general'));
 
   void fontSize(double size) => emit(state.copyWith(fontSize: size));
   void isBold(bool value) => emit(state.copyWith(isBold: value));
   void isItalic(bool value) => emit(state.copyWith(isItalic: value));
   void color(String value) => emit(state.copyWith(color: value));
-  // void newsSpec(NewsSpec value) => emit(state.copyWith(newSpec: value));
   void newsCountry(String value) => emit(state.copyWith(newsCountry: value));
+  void newsCategory(String value) => emit(state.copyWith(categotyCode: value));
 }

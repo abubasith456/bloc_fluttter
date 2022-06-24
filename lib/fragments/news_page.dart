@@ -11,7 +11,8 @@ import '../model/summary_model.dart';
 import '../navidation_drawer.dart';
 
 class NewsPage extends StatefulWidget {
-  const NewsPage({Key? key}) : super(key: key);
+  BuildContext context;
+  NewsPage(this.context);
 
   static const String routeName = '/newsPage';
 
@@ -20,7 +21,23 @@ class NewsPage extends StatefulWidget {
 }
 
 class _NewsPageState extends State<NewsPage> {
-  final CovidBloc _newsBloc = CovidBloc();
+  late final CovidBloc _newsBloc = CovidBloc(context);
+
+  Color colors(String name) {
+    if (name == 'Red') {
+      return Colors.red;
+    } else if (name == 'Blue') {
+      return Colors.blue;
+    } else if (name == 'Green') {
+      return Colors.green;
+    } else if (name == 'Yellow') {
+      return Colors.yellow;
+    } else if (name == 'Orange') {
+      return Colors.orange;
+    }
+    return Colors.black;
+  }
+
   @override
   void initState() {
     _newsBloc.add(GetNewsList());
@@ -42,21 +59,6 @@ class _NewsPageState extends State<NewsPage> {
     );
   }
 
-  Color colors(String name) {
-    if (name == 'Red') {
-      return Colors.red;
-    } else if (name == 'Blue') {
-      return Colors.blue;
-    } else if (name == 'Green') {
-      return Colors.green;
-    } else if (name == 'Yellow') {
-      return Colors.yellow;
-    } else if (name == 'Orange') {
-      return Colors.orange;
-    }
-    return Colors.black;
-  }
-
   Widget _buildListCovid() {
     return Container(
       margin: EdgeInsets.all(8.0),
@@ -70,7 +72,13 @@ class _NewsPageState extends State<NewsPage> {
                   content: Text(state.error),
                 ),
               );
-            } else if (state is NewsCountryChanged) {}
+            } else if (state is NewsCountryChanged) {
+              BlocBuilder<SettingCubit, SettingState>(
+                builder: (context, state) {
+                  return context.read();
+                },
+              );
+            }
           },
           child: BlocBuilder<CovidBloc, CovidState>(
             builder: (context, state) {
@@ -104,7 +112,7 @@ class _NewsPageState extends State<NewsPage> {
             margin: const EdgeInsets.all(2),
             child: Card(
               child: Container(
-                margin: const EdgeInsets.all(8.0),
+                margin: const EdgeInsets.all(10),
                 child: BlocBuilder<SettingCubit, SettingState>(
                   builder: (context, state) {
                     return Row(
