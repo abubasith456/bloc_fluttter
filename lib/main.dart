@@ -1,4 +1,6 @@
 import 'package:bloc_flutter/bloc/counter_block.dart';
+import 'package:bloc_flutter/bloc/covid_boc/bloc/covid_bloc.dart';
+import 'package:bloc_flutter/bloc/qr_bloc/bloc/qr_bloc.dart';
 import 'package:bloc_flutter/cubit_state/setting_cubit.dart';
 import 'package:bloc_flutter/cubit_state/setting_state.dart';
 import 'package:bloc_flutter/fragments/about_us.dart';
@@ -26,22 +28,36 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => SettingCubit(),
-        lazy: false,
-        child: MaterialApp(
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
-            routes: {
-              // PageRoutes.covidPage: (context) => CovidPage(),
-              PageRoutes.newsPage: (context) => NewsPage(context),
-              PageRoutes.qrScannerPage: (context) => QRscannerPage(),
-              PageRoutes.aboutUs: (context) => AboutUs(),
-              PageRoutes.settings: (context) => SettingPage()
-            },
-            home: NewsPage(context)));
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => SettingCubit(),
+          lazy: true,
+        ),
+        BlocProvider<CovidBloc>(
+          create: ((context) => CovidBloc(context)),
+          lazy: true,
+        ),
+        BlocProvider<QrBloc>(
+          create: (context) => QrBloc(),
+          lazy: true,
+        )
+      ],
+      key: const Key('MyPage'),
+      child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          routes: {
+            // PageRoutes.covidPage: (context) => CovidPage(),
+            PageRoutes.newsPage: (context) => NewsPage(context),
+            PageRoutes.qrScannerPage: (context) => QRscannerPage(),
+            PageRoutes.aboutUs: (context) => AboutUs(),
+            PageRoutes.settings: (context) => SettingPage()
+          },
+          home: NewsPage(context)),
+    );
   }
 }
 

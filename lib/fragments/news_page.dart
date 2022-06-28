@@ -52,10 +52,13 @@ class _NewsPageState extends State<NewsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: NavigationDrawer(),
-      appBar: AppBar(title: const Text('News List')),
-      body: _buildListCovid(),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        drawer: NavigationDrawer(),
+        appBar: AppBar(title: const Text('News List')),
+        body: _buildListCovid(),
+      ),
     );
   }
 

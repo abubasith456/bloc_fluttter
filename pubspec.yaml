@@ -42,6 +42,11 @@ dependencies:
   dio: ^4.0.4
   url_launcher: ^6.0.3
   flutter_launcher_icons: ^0.9.3
+  # flutter_barcode_scanner: ^2.0.0
+  mobile_scanner: ^2.0.0
+  # barcode: ^2.2.1
+  flutter_svg: ^1.1.0
+  qr_flutter: ^4.0.0
   # barcode_scan: any
   
 
@@ -76,6 +81,7 @@ flutter:
   assets:
     - lib/assets/icon/icon.png
     - lib/assets/no_image.png
+    - assets/QR.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -13,14 +13,6 @@ class CovidBloc extends Bloc<CovidEvent, CovidState> {
 
     on<CovidEvent>((event, emit) async {
       try {
-        // emit(CovidLoadingState());
-        // final mList = await _apiRepository.fetchCovidList();
-        // emit(CovidLoadedState(mList));
-        // if (mList.error != null) {
-        //   emit(CovidError(mList.error!));
-        // }
-
-        //News Bloc
         emit(NewsLoadingState());
         final newsList = await _apiRepository.fetchNewsList(context);
         emit(NewsCountryChanged('in'));

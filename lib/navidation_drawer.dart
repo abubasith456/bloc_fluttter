@@ -41,10 +41,10 @@ class NavigationDrawer extends StatelessWidget {
             onTap: () =>
                 Navigator.pushReplacementNamed(context, PageRoutes.settings),
           ),
-          ListTile(
-            title: const Text('App version 1.0.0'),
-            onTap: () {},
-          ),
+          // ListTile(
+          //   title: const Text('App version 1.0.0'),
+          //   onTap: () {},
+          // ),
         ],
       ),
     );
