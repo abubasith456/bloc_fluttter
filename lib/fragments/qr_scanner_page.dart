@@ -42,25 +42,23 @@ class _QRscannerPageState extends State<QRscannerPage> {
             alignment: Alignment.center,
             child: BlocConsumer<QrBloc, QrState>(
               listener: (newContext, state) {
-                if (state is QrInitial) {
-                  bodyWidget(context, 'Flutter', '');
-                } else if (state is MoveQRstate) {
+                if (state is MoveQRstate) {
                   Navigator.push(
                       newContext,
                       MaterialPageRoute(
                           builder: (routeContext) => QRscanner(
                                 context: routeContext,
                               )));
-                } else if (state is QRgenerated) {
-                  bodyWidget(context, state.svgString, '');
                 }
               },
               builder: (context, state) {
-                if (state is QrInitial) {
+                debugPrint(state.runtimeType.toString());
+                if (state is QrInitialState) {
                   return bodyWidget(context, 'Flutter', '');
-                } else if (state is QRscanned) {
-                  return bodyWidget(context, 'Flutter', state.scannedValue);
-                } else if (state is QRgenerated) {
+                } else if (state is QRscannedState) {
+                  return bodyWidget(
+                      this.context, 'Flutter', state.scannedValue);
+                } else if (state is QRgeneratedState) {
                   return bodyWidget(context, state.svgString, '');
                 } else {
                   return bodyWidget(context, 'Flutter', '');
@@ -86,7 +84,7 @@ class _QRscannerPageState extends State<QRscannerPage> {
         ),
         Container(
           width: MediaQuery.of(context).size.width - 100,
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: TextField(
             controller: textEditingController,
           ),
@@ -94,15 +92,14 @@ class _QRscannerPageState extends State<QRscannerPage> {
         ElevatedButton(
             onPressed: () {
               if (textEditingController.text != '') {
-                print('Clicked');
-                BlocProvider.of<QrBloc>(context).onEvent(
-                    GenerateQRPressed(context, textEditingController.text));
+                BlocProvider.of<QrBloc>(context)
+                    .add(GenerateQRPressedEvent(textEditingController.text));
               }
             },
             child: const Text('Generate QR code')),
         ElevatedButton(
             onPressed: () {
-              BlocProvider.of<QrBloc>(context).add(ScanQRPressed(context));
+              BlocProvider.of<QrBloc>(context).add(ScanQRPressedEvent(context));
             },
             child: const Text('Start QR scan')),
         const SizedBox(
@@ -112,14 +109,6 @@ class _QRscannerPageState extends State<QRscannerPage> {
       ])),
     );
   }
-
-  // generateQRsvg(String text) {
-  //   final dm = barcode.Barcode.fromType(barcode.BarcodeType.QrCode);
-  //   //Generate SVG
-  //   final svg = dm.toSvg(text, width: 200, height: 200);
-
-  //   return File('barcode.svg').writeAsString(svg);
-  // }
 
   // Expanded(
   //     flex: 5,
@@ -158,3 +147,28 @@ class _QRscannerPageState extends State<QRscannerPage> {
 //     super.dispose();
 //   }
 }
+
+// BlocListener<QrBloc, QrState>(
+//                 listener: (context, state) {
+//                   if (state is QrInitial) {
+//                     bodyWidget(context, 'Flutter', '');
+//                   } else if (state is MoveQRstate) {
+//                     Navigator.push(
+//                         context,
+//                         MaterialPageRoute(
+//                             builder: (routeContext) => QRscanner(
+//                                   context: routeContext,
+//                                 )));
+//                   } else if (state is QRgenerated) {
+//                     bodyWidget(context, state.svgString, '');
+//                     print(state.svgString);
+//                   } else if (state is QRscanned) {
+//                     bodyWidget(context, 'Flutter', state.scannedValue);
+//                   } else if (state is QRgenerated) {
+//                     bodyWidget(context, state.svgString, '');
+//                   } else {
+//                     bodyWidget(context, 'Flutter', '');
+//                   }
+//                 },
+//                 child: bodyWidget(context, 'Flutter', ''),
+//               )

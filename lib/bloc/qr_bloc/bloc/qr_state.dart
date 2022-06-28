@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 part of 'qr_bloc.dart';
 
 abstract class QrState extends Equatable {
@@ -7,16 +9,16 @@ abstract class QrState extends Equatable {
   List<Object> get props => [];
 }
 
-class QrInitial extends QrState {}
+class QrInitialState extends QrState {}
 
 class MoveQRstate extends QrState {}
 
-class QRscanned extends QrState {
+class QRscannedState extends QrState {
   String scannedValue;
-  QRscanned(this.scannedValue);
+  QRscannedState(this.scannedValue);
 }
 
-class QRgenerated extends QrState {
+class QRgeneratedState extends QrState {
   String svgString;
-  QRgenerated(this.svgString);
+  QRgeneratedState(this.svgString);
 }

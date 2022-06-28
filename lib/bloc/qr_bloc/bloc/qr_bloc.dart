@@ -8,16 +8,16 @@ part 'qr_event.dart';
 part 'qr_state.dart';
 
 class QrBloc extends Bloc<QrEvent, QrState> {
-  QrBloc() : super(QrInitial()) {
+  QrBloc() : super(QrInitialState()) {
     on<QrEvent>((event, emit) {
-      if (event is GenerateQRPressed) {
-        emit(QRgenerated(event.text));
-      } else if (event is ScanQRPressed) {
+      if (event is ScanQRPressedEvent) {
         emit(MoveQRstate());
       } else if (event is QrScannedEvent) {
-        emit(QRscanned(event.scannedValue));
-      } else if (event is QRbackButtonPressed) {
-        emit(QrInitial());
+        emit(QRscannedState(event.scannedValue));
+      } else if (event is QRbackButtonPressedEvent) {
+        emit(QrInitialState());
+      } else if (event is GenerateQRPressedEvent) {
+        emit(QRgeneratedState(event.text));
       }
     });
   }

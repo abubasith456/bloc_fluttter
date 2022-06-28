@@ -7,15 +7,14 @@ abstract class QrEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class ScanQRPressed extends QrEvent {
+class ScanQRPressedEvent extends QrEvent {
   BuildContext context;
-  ScanQRPressed(this.context);
+  ScanQRPressedEvent(this.context);
 }
 
-class GenerateQRPressed extends QrEvent {
-  BuildContext context;
+class GenerateQRPressedEvent extends QrEvent {
   String text;
-  GenerateQRPressed(this.context, this.text);
+  GenerateQRPressedEvent(this.text);
 }
 
 class QrScannedEvent extends QrEvent {
@@ -23,4 +22,4 @@ class QrScannedEvent extends QrEvent {
   QrScannedEvent(this.scannedValue);
 }
 
-class QRbackButtonPressed extends QrEvent {}
+class QRbackButtonPressedEvent extends QrEvent {}

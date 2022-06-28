@@ -20,7 +20,7 @@ class QRscanner extends StatelessWidget {
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 BlocProvider.of<QrBloc>(this.context)
-                    .add(QRbackButtonPressed());
+                    .add(QRbackButtonPressedEvent());
                 Navigator.pop(context);
               }),
           title: const Text('Scann QR'),
